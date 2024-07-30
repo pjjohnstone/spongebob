@@ -10,8 +10,7 @@ pub fn to_spongebob(words: String) -> String {
 }
 
 fn maybe_change_case(char: String, index: Int) -> String {
-  let mod = int.modulo(index, 2)
-  case mod {
+  case int.modulo(index, 2) {
     Ok(0) -> string.lowercase(char)
     Ok(1) -> string.uppercase(char)
     _ -> string.lowercase(char)
