@@ -1,12 +1,12 @@
 import gleeunit
 import gleeunit/should
+import spongebob
 
 pub fn main() {
   gleeunit.main()
 }
 
-// gleeunit test functions end in `_test`
-pub fn hello_world_test() {
-  1
-  |> should.equal(1)
+pub fn to_spongebob_test() {
+  spongebob.to_spongebob("Test sentence.")
+  |> should.equal("tEsT SeNtEnCe.")
 }
