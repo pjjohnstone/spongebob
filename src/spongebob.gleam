@@ -7,14 +7,14 @@ import spongeweb
 import wisp
 
 pub fn main() {
-  start_wisp()
-  // case argv.load().arguments {
-  //   [words] -> io.println(internal.to_spongebob(words))
-  //   _ -> io.println("Usage: spongebob <phrase>")
-  // }
+  case argv.load().arguments {
+    ["server"] -> start_wisp()
+    ["string", words] -> run_command(words)
+    _ -> print_help()
+  }
 }
 
-pub fn start_wisp() {
+fn start_wisp() {
   wisp.configure_logger()
   let secret_key_base = wisp.random_string(64)
 
@@ -25,4 +25,12 @@ pub fn start_wisp() {
     |> mist.start_http
 
   process.sleep_forever()
+}
+
+fn run_command(words) {
+  io.println(internal.to_spongebob(words))
+}
+
+fn print_help() {
+  io.println("Usage: spongebob string <phrase>")
 }
